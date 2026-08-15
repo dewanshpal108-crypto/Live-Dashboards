@@ -8,6 +8,20 @@
       "when": 1786365183738,
       "tag": "0000_milky_taskmaster",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786440064633,
+      "tag": "0001_funny_dreadnoughts",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786441785959,
+      "tag": "0002_glamorous_silver_sable",
+      "breakpoints": true
     }
   ]
 }
