@@ -1,6 +1,6 @@
 import { pgEnum, integer , pgTable, serial, text, timestamp , json } from 'drizzle-orm/pg-core';
 
-export const matchStatusEnum = pgEnum('match_status', ['scheduled', 'live', 'completed', 'finished']);
+export const matchStatusEnum = pgEnum('match_status', ['scheduled', 'live', 'finished']);
 // Define the 'Matches' table
 export const matches = pgTable('matches', {
   id: serial('id').primaryKey(),
@@ -11,6 +11,7 @@ export const matches = pgTable('matches', {
   status: matchStatusEnum('status').notNull().default('scheduled'),
   homeScore: integer('home_score').default(0),
   awayScore: integer('away_score').default(0),
+  endTime: timestamp('end_time'),
   createdAt: timestamp('created_at').defaultNow().notNull().defaultNow(),
 });
 
