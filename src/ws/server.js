@@ -3,7 +3,7 @@ import { WebSocket, WebSocketServer } from "ws";
 function sendMessage(payload, socket) {
     if (socket.readyState !== WebSocket.OPEN) {
         console.error("Socket is not open. Cannot send message.");
-        return;
+        continue;
     }
 
     socket.send(JSON.stringify(payload));
