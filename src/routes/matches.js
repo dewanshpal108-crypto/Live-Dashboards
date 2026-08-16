@@ -19,11 +19,13 @@ matchesRouter.get('/', (req, res) => {
 
 matchesRouter.post('/', async (req, res) => {
     const parsed = createMatchSchema.safeParse(req.body);
-    const {data: {startTime , endTime , homeScore , awayScore}} = parsed;
     if (!parsed.success) {
         return res.status(400).json({ error: 'Invalid Payload', details:JSON.stringify(parsed.error)});
     }
-    console.log("Parsed Data: ", parsed.data);
+    const {data: {startTime , endTime , homeScore , awayScore}} = parsed;
+
+    // console.log("Parsed Data: ", parsed.data);
+
     try{
         //inserting the match in db
         const [newMatch] = await db.insert(matches).values({
