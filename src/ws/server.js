@@ -1,4 +1,5 @@
 import { WebSocket, WebSocketServer } from "ws";
+import { wsArcjet } from "../arcjet.js";
 
 function sendMessage(payload, socket) {
     if (socket.readyState !== WebSocket.OPEN) {
@@ -24,7 +25,29 @@ export function setupWebSocketServer(server) {
         maxPayload: 1024 * 1024
     });
 
-    wss.on("connection", (ws) => {
+    wss.on("connection", async (ws , req) => {
+        if(wsArcjet)
+        {
+            try{
+                const decision = await wsArcjet.protect(req);
+
+                if(decision.isDenied())
+                {
+                    const code = decision.reason.isRateLimit() ? '1013' : '1008';
+                    const Reason = decision.reason.isRateLimit() ? 'Rate limit exceeded' : 'Access Denied';
+
+                    console.error("ws server precluded")
+                    ws.close(code , Reason);
+                    return;
+                }
+            }catch(e)
+            {
+                console.error('Arcjet error in ws')
+                ws.close(1011 , 'Server security compromised');
+                return;
+            }
+        }
+
         console.log("✅ WebSocket connected");
 
         sendMessage(
