@@ -32,11 +32,11 @@ export const wsArcjet = ARCJET_KEY ? arcjet({
 }) : null
 
 export function securityMiddleware(){
-    return (req, res , next) => {
+    return async (req, res , next) => {
         if(!httpArcjet) return next();
 
         try{
-            const decision = httpArcjet.protect(req);
+            const decision = await httpArcjet.protect(req);
             if(decision.isDenied())
             {
                 if(decision.reason.isRateLimit())
