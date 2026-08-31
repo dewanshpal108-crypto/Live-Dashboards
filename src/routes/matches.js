@@ -8,9 +8,9 @@ import { desc } from 'drizzle-orm';
 
  const matchesRouter =  Router();
 
-matchesRouter.get('/', (req, res) => {
+matchesRouter.get('/', async (req, res) => {
     const { limit } = listMatchesQuerySchema.safeParse(req.query).data;
-    db.select().from(matches).orderBy(desc(matches.createdAt)).limit(limit).then((data) => {
+    await db.select().from(matches).orderBy(desc(matches.createdAt)).limit(limit).then((data) => {
         res.status(200).json({ message: 'Fetching matches...' , data: data });
     }).catch((error) => {
         res.status(500).json({ error: 'Internal Server Error', detail: error.message });
