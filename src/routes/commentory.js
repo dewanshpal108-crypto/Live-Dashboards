@@ -42,6 +42,9 @@ commentoryRouter.post('/:id', async (req, res) => {
             })
             .returning();
 
+            if(res.app.locals.broadcastCommentory){
+                res.app.locals.broadcastCommentory(newCommentary.matchId , newCommentary );
+            }
         return res.status(201).json({
             message: 'Commentary created successfully',
             data: newCommentary,
