@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Match Dashboards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">L</div>
+          <div>
+            <p class="eyebrow">Sports Center</p>
+            <h1>Live Dashboards</h1>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="status-pill live-pill">
+            <span class="pulse"></span>
+            Live feed
+          </div>
+          <button class="ghost-btn">All Matches</button>
+        </div>
+      </header>
+
+      <main class="dashboard-layout">
+        <section class="hero-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Now Trending</p>
+              <h2>Match Pulse</h2>
+            </div>
+            <span class="chip accent">Updated 8s ago</span>
+          </div>
+
+          <div id="featuredMatch" class="featured-match"></div>
+        </section>
+
+        <aside class="side-panel">
+          <div class="panel-header compact">
+            <h3>Leaderboard</h3>
+            <span class="chip">Top form</span>
+          </div>
+          <ul id="leaderboard" class="leaderboard"></ul>
+        </aside>
+      </main>
+
+      <section class="content-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h3>Matches</h3>
+            </div>
+            <span class="chip">3 live</span>
+          </div>
+
+          <div id="matchList" class="match-list"></div>
+        </div>
+
+        <div class="panel commentary-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Feed</p>
+              <h3>Live Commentary</h3>
+            </div>
+            <span class="chip accent">Stream</span>
+          </div>
+
+          <div id="commentaryFeed" class="commentary-feed"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
